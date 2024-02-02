@@ -12,4 +12,15 @@ app.use(express.static('public'));
 
 sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
+
+    sequelize.query('SELECT * FROM employees', (err, results) => {
+      if (err) {
+        console.error('Error executing query: ' + err.stack);
+        return;
+      }
+      console.log('Data from the database:');
+      console.log(results);
+    });
   });
+
+  

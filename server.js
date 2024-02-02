@@ -1,12 +1,26 @@
 const express = require('express');
+// Import and require mysql2
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const sequelize = require('./config/connection');
 
 
-// Import models to sync with the database
-const models = require('./models');
-
-const app = express();
 const PORT = process.env.PORT || 3001;
+const app = express();
 
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+// Connect to database
+const db = mysql.createConnection(
+  {
+    host: 'localhost',
+    // MySQL username,
+    user: 'root',
+    // MySQL password
+    password: '',
+    database: 'courses_db'
+  },
+  console.log(`Connected to the courses_db database.`)
+);

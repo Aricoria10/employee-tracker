@@ -4,7 +4,7 @@ VALUES ("Web Development"),
        ("Math"),
        ("Electives");
 
-INSERT INTO course_names (name, department)
+INSERT INTO role (name, department)
 VALUES ("Intro to JavaScript", 1),
        ("Data Science", 2),
        ("Linear Algebra", 3),
